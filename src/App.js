@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./components/Header";
 import PokemonGrid from "./components/PokemonGrid";
 import Search from "./components/Search";
+import Button from "./components/Button";
 import { useState, useEffect } from "react";
 
 const App = () => {
@@ -40,9 +41,10 @@ const App = () => {
       <Header />
       <Search />
       <PokemonGrid loading={loading} items={allPokemons} />
-      <button className="load-more" onClick={() => getAllPokemons()}>
+      {/* <button className="load-more" onClick={() => getAllPokemons()}>
         <h1>Load More</h1>
-      </button>
+      </button> */}
+      <Button click={getAllPokemons} />
     </div>
   );
 };
