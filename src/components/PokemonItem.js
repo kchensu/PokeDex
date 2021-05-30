@@ -22,10 +22,10 @@ function PokemonItem({ item }) {
               })}
             </li>
             <li>
-              <strong>Weight:</strong> {item.weight}
+              <strong>Weight:</strong> {item.weight / 10 + " kg"}
             </li>
             <li>
-              <strong>Height:</strong> {item.height}
+              <strong>Height:</strong> {item.height / 10 + " m"}
             </li>
             <li>
               <strong>Abilities:</strong>{" "}

@@ -1,19 +1,20 @@
 import "./App.css";
 import Header from "./components/Header";
 import PokemonGrid from "./components/PokemonGrid";
+import Search from "./components/Search";
 import { useState, useEffect } from "react";
 
 const App = () => {
   const [allPokemons, setAllPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadMore, setLoadMore] = useState(
-    "https://pokeapi.co/api/v2/pokemon?limit=251"
+    "https://pokeapi.co/api/v2/pokemon?limit=20"
   );
 
-  const getAllPokemons = async () => {
+  async function getAllPokemons() {
     const res = await fetch(loadMore);
     const data = await res.json();
-
+    console.log(data);
     setLoadMore(data.next);
 
     function createPokemonObject(results) {
@@ -28,7 +29,7 @@ const App = () => {
     }
     createPokemonObject(data.results);
     setLoading(false);
-  };
+  }
 
   useEffect(() => {
     getAllPokemons();
@@ -37,7 +38,11 @@ const App = () => {
   return (
     <div className="container">
       <Header />
+      <Search />
       <PokemonGrid loading={loading} items={allPokemons} />
+      <button className="load-more" onClick={() => getAllPokemons()}>
+        <h1>Load More</h1>
+      </button>
     </div>
   );
 };
